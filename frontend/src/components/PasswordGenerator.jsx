@@ -58,11 +58,11 @@ function PasswordGenerator() {
                 <input
                   type="checkbox"
                   className="form-check-input"
-                  id="numbers"
+                  id="special"
                   onChange={(e) => {setSpecialCharactersAllowed((prev) => !prev)}}
                   defaultChecked = {isSpecialCharactersAllowed}
                 />
-                <label htmlFor="numbers">Special Characters</label>
+                <label htmlFor="special">Special Characters</label>
               </div>
             </div>
           </div>
