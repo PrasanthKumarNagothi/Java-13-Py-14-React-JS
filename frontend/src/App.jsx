@@ -1,11 +1,15 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider
+} from 'react-router-dom'
 import Counter from './components/Counter'
 import PasswordGenerator from './components/PasswordGenerator'
 import Employees from './components/Employees'
 import EmployeeProps from './components/EmployeeProps'
+import Home from './components/Home'
+import Layout from './Layout'
 
 function App() {
 
@@ -27,16 +31,17 @@ function App() {
     }
   ]
 
+  const router = createBrowserRouter(
+    createRoutesFromElements (
+      <Route path='/' element={<Layout />}>
+        <Route path='' element={<Home />} />
+        <Route path='counter' element={<Counter />}/>
+      </Route>
+    )
+  )
+
   return (
-    <>
-      <h1>React JS</h1>
-      <EmployeeProps employee={{id: 1,name: 'John',designation : 'Junior SWE'}} />
-      <EmployeeProps employee={{id: 2,name: 'Smith',designation : 'Senior SWE'}} />
-      <EmployeeProps employee={{id: 3,name: 'Akhil',designation : 'Trainer'}} />
-      <Employees />
-      <PasswordGenerator />
-      <Counter />
-    </>
+    <RouterProvider router={router} />
   )
 }
 
